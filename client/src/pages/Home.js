@@ -1,10 +1,11 @@
-import {IconButton, Paper, Typography, Stack, Grid, Button} from '@mui/material';
+import {IconButton, Typography, Stack, Grid, Button} from '@mui/material';
 import { ThemeProvider, styled } from '@mui/material/styles';
 import { theme } from "../theme/theme";
 import {ReactComponent as Search} from '../static/search.svg';
 import TextTransition, { presets } from "react-text-transition";
 import { useState, useEffect } from 'react';
-import HRC from '../static/logo.png'
+import {Link} from 'react-router-dom';
+import HRC from '../static/logo.png';
 import QuoteList from '../components/QuoteList';
 import RolesList from '../components/RolesList';
 
@@ -14,7 +15,7 @@ const HomeGrid=styled(Grid)(({theme}) => ({
   marginLeft: '50px',
   marginRight: '50px',
   backgroundColor: theme.palette.primary.light,
-  height: '800px',
+  height: '900px',
   padding: '50px',
   display: 'absolute',
   color: theme.palette.primary.contrastText,
@@ -49,7 +50,7 @@ const TEXTS = [
   "DMS",
   "CAA",
   "EIPP",
-  "Collections",
+  "CLS",
   "Credit"
 ];
 
@@ -115,7 +116,7 @@ function Home(props) {
               17
             </Typography>
               Questions Asked <br/><br/>
-            <StyledButton variant="contained" size="small" onClick={props.action}>Ask Questions</StyledButton>
+            <StyledButton variant="contained" size="small" component={Link} to="/askQuestion">Ask Questions</StyledButton>
           </Typography>
           </Area> 
         </Grid>
@@ -126,7 +127,7 @@ function Home(props) {
               9
             </Typography>
               Questions Answered <br/><br/>
-            <StyledButton variant="contained" size="small" onClick={props.action}>Answer Questions</StyledButton>
+            <StyledButton variant="contained" size="small" component={Link} to="/topQuestions">Answer Questions</StyledButton>
           </Typography>
           </Area> 
         </Grid>

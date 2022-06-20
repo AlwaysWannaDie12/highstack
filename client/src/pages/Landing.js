@@ -14,7 +14,7 @@ const HomeGrid=styled(Grid)(({theme}) => ({
   marginLeft: '50px',
   marginRight: '50px',
   backgroundColor: theme.palette.primary.light,
-  height: '800px',
+  height: '900px',
   padding: '50px',
   display: 'absolute',
   color: theme.palette.primary.contrastText,
@@ -49,7 +49,6 @@ const TEXTS = [
   "DMS",
   "CAA",
   "EIPP",
-  "Collections",
   "Credit"
 ];
 
@@ -93,7 +92,7 @@ function Landing(props) {
               <TextTransition springConfig={presets.gentle} inline='true' direction='down' style={{}} >
                 <h2 style={{color:theme.palette.primary.contrastTextLight}}>{TEXTS[index % TEXTS.length]}</h2>
               </TextTransition>
-              {" "}?
+              {""}?
               <br/>
             <Typography variant="h6" color="inherit" component='div' align="center" sx={{width:'100%'}}>
               Get started with high<b>Stack</b> and join the community of knowledge and solutions all over <b>HighRadius Corporation.</b>

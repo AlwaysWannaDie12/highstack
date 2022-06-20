@@ -21,8 +21,8 @@ import Axios from 'axios';
 
 const Body = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  height: '100vh',
   overflow: 'auto',
+  height: '100%',
 }));
 
 
@@ -35,7 +35,7 @@ function App() {
     password: "test1234"
   }
 
-  const [user, setUser] = useState({ldap: "", name: "", password: ""});
+  const [user, setUser] = useState({ldap: "srenjoy.saha", name: "srenjoy.saha", password: "test1234"});
   const [error, setError] = useState("");
 
   const ldapLogin = details => {

@@ -13,13 +13,14 @@ import {Link} from 'react-router-dom';
 
 const SidePanelPaper = styled(Paper)(({theme}) => ({ 
     justifyContent: 'center',
-    position: 'fixed',
+    position: 'absolute',
     width: '5%',
-    height: '100vh',
+    height: '100%',
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.primary.contrastText,
     padding: '150px 0px',
     marginLeft: '-10px',
+    zIndex: 999,
 }));
 
 function SidePanel(props) {
