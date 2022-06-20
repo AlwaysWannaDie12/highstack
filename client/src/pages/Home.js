@@ -15,11 +15,11 @@ const HomeGrid=styled(Grid)(({theme}) => ({
   marginLeft: '50px',
   marginRight: '50px',
   backgroundColor: theme.palette.primary.light,
-  height: '900px',
+  height: '100%',
   padding: '50px',
   display: 'absolute',
   color: theme.palette.primary.contrastText,
-  width: 'auto',
+  width: '80%',
   borderRadius: theme.shape.borderRadius,
   zIndex:2,
 }));

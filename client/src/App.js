@@ -22,7 +22,8 @@ import Axios from 'axios';
 const Body = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   overflow: 'auto',
-  height: '100%',
+  height: 'inherit',
+  display: 'flex',
 }));
 
 
@@ -76,16 +77,21 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Body maxWidth="100%" disableGutters='true' bgcolor="#1f222b">
-        <BrowserRouter>
-            <Header action={() => setButtonPopup(!buttonPopup)} nav={user} drawer={() => toggleDrawer()}/>
+      <BrowserRouter>
+        <Header action={() => setButtonPopup(!buttonPopup)} nav={user} drawer={() => toggleDrawer()}/>
+
+       
+          <Body maxWidth="100%" disableGutters='true' bgcolor={theme.palette.primary.main}>
+          
             
             <Login trigger = {buttonPopup} action={() => setButtonPopup(!buttonPopup)} Login={ldapLogin} error={error}/>
+            
             {user.name!=="" ? (
               <SidePanel toggle={open}/>
             ):(
               <SidePanel toggle={null}/>
             )}
+            
             <Routes>
             {user.name!=="" ? (
               <Route path="/" element={<Home/>} />
@@ -97,14 +103,14 @@ function App() {
             <Route path="/topQuestions" element={<TopQuestions/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/tags" element={<Tags/>}/>
-            <Route path="/connect" element={<Connect/>}/>
-
-              
+            <Route path="/connect" element={<Connect/>}/>              
             </Routes>
-          
+
+           
+            </Body>
           </BrowserRouter>
 
-        </Body>
+        
       </ThemeProvider>
       
     </div>
