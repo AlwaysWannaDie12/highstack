@@ -7,11 +7,11 @@ const HomeGrid=styled(Grid)(({theme}) => ({
   marginLeft: '50px',
   marginRight: '50px',
   backgroundColor: theme.palette.primary.light,
-  height: 'fit-content',
+  height: '100%',
   padding: '50px',
   display: 'absolute',
   color: theme.palette.primary.contrastText,
-  width: 'auto',
+  width: '80%',
   borderRadius: theme.shape.borderRadius,
   zIndex:2,
   textAlign: 'left',
@@ -73,7 +73,8 @@ function AskQuestion() {
                        Include all the information someone would need to answer your question
                        {<br/>}
                        <TextArea variant="outlined" size="small" 
-                        color="secondary" sx={{ input: { color: 'white' } }} multiline  rows={15} maxRows={20}></TextArea>
+                        color="secondary" multiline inputProps={{ style: { color: "white" } }}
+                        rows={15} maxRows={20} ></TextArea>
                         {<br/>}
                         {<br/>}{<br/>}
                         <StyleText variant="h6" color="inherit" component='div'>
@@ -89,7 +90,7 @@ function AskQuestion() {
                             <TextArea variant="outlined" size="small" color="secondary" sx={{ input: { color: 'white' } }} ></TextArea>
                             {<br/>}
                         {<br/>}{<br/>}
-                        <StyledButton variant="contained" size="medium">Review your Questions</StyledButton>
+                        <StyledButton variant="contained" size="medium">Review your Question</StyledButton>
                       </StyleText>
                     </StyleText>
                   </StyleText>

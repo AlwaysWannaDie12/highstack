@@ -36,7 +36,7 @@ function App() {
     password: "test1234"
   }
 
-  const [user, setUser] = useState({ldap: "srenjoy.saha", name: "srenjoy.saha", password: "test1234"});
+  const [user, setUser] = useState({ldap: "srenjoy.saha", name: "Srenjoy Saha", password: "test1234"});
   const [error, setError] = useState("");
 
   const ldapLogin = details => {
@@ -98,7 +98,7 @@ function App() {
             ):(
               <Route path="/" element={<Landing action={() => setButtonPopup(!buttonPopup)}/>}/>
             )}
-            <Route path="/user" element={<AccountManage/>}/>
+            <Route path="/user" element={<AccountManage user={user}/>}/>
             <Route path="/askQuestion" element={<AskQuestion/>}/>
             <Route path="/topQuestions" element={<TopQuestions/>}/>
             <Route path="/products" element={<Products/>}/>
