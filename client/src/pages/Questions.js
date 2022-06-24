@@ -1,27 +1,30 @@
-import {Card, Paper, Typography, Stack, Grid} from '@mui/material';
+import {List, Paper, Typography, Stack, Grid} from '@mui/material';
 import { ThemeProvider, styled } from '@mui/material/styles';
 import QuestionLine from '../components/QuestionLine';
+import QuestionTable from '../components/QuestionTable';
 import { theme } from "../theme/theme";
 
+
 const HomeGrid=styled(Grid)(({theme}) => ({
-    marginTop: '80px',
-    marginLeft: '140px',
+    marginTop: '30px',
+    marginLeft: '50px',
     marginRight: '50px',
     backgroundColor: theme.palette.primary.light,
-    height: '600px',
-    padding: '20px',
+    height: '100%',
+    padding: '50px',
     display: 'absolute',
     color: theme.palette.primary.contrastText,
-    width: 'auto',
+    width: '80%',
     borderRadius: theme.shape.borderRadius,
     zIndex:2,
+    textAlign: 'center',
 }));
 
 
 const QuestionArea = styled(Stack)(({ theme }) => ({
     marginTop: '50px',
-    height: '80%',
-    overflow: 'scroll',
+    height: '500px',
+    overflowY: 'scroll',
     backgroundColor: theme.palette.primary.shadow,
     borderRadius: theme.shape.borderRadius,
     paddingLeft: '15px',
@@ -29,30 +32,27 @@ const QuestionArea = styled(Stack)(({ theme }) => ({
     zIndex:3,
 }));
 
-
-function TopQuestions() {
+function Questions() {
   return (
     <ThemeProvider theme={theme}>
             <HomeGrid >
-            <Typography variant="h5" color="inherit" component='div' 
-                sx={{
-                    float:'left'}}>
-                        Top Questions:
-                </Typography>
-                <QuestionArea spacing={3}>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                </QuestionArea>
+                <QuestionTable title="Questions" height="600px"/>
             </HomeGrid>
         
     </ThemeProvider>
   )
 }
 
-export default TopQuestions
+export default Questions
+
+
+{/* <QuestionArea spacing={3}>
+                    <QuestionLine {...Question}/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                    <QuestionLine/>
+                </QuestionArea> */}

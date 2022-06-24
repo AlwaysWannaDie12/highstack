@@ -33,13 +33,13 @@ const QuestionText = styled(Paper)(({theme}) => ({
 
 }));
 
-function QuestionLine() {
+function QuestionLine(props) {
   return (
     <ThemeProvider theme={theme}>
         <Bar elevation={0}>
         <Stack direction="row" spacing={3}>
             <Stats elevation={0}>
-                <Typography variant="h6" color="inherit" component='div'>6</Typography>
+                <Typography variant="h6" color="inherit" component='div'>{props.views}</Typography>
                 <Tooltip title="Views">
                     <IconButton>
                         <VisibilityIcon />
@@ -47,7 +47,7 @@ function QuestionLine() {
                 </Tooltip>
             </Stats>
             <Stats elevation={0}>
-                <Typography variant="h6" color="inherit" component='div'>6</Typography>
+                <Typography variant="h6" color="inherit" component='div'>{props.answers}</Typography>
                 <Tooltip title="Answers">
                     <IconButton>
                         <QuestionAnswerIcon />
@@ -55,7 +55,7 @@ function QuestionLine() {
                 </Tooltip>
             </Stats>
             <Stats elevation={0}>
-                <Typography variant="h6" color="inherit" component='div'>6</Typography>
+                <Typography variant="h6" color="inherit" component='div'>{props.likes}</Typography>
                 <Tooltip title="Likes">
                     <IconButton>
                         <ThumbUpIcon />
@@ -63,7 +63,7 @@ function QuestionLine() {
                 </Tooltip>
             </Stats>
             <QuestionText elevation={0}>
-                <Typography variant="h6" color="inherit" component='div'>Here is a sample Question we have created for java </Typography>
+                <Typography variant="h6" color="inherit" component='div'>{props.title}</Typography>
 
             </QuestionText>
 

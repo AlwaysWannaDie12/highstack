@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 import HRC from '../static/logo.png';
 import QuoteList from '../components/QuoteList';
 import RolesList from '../components/RolesList';
+import QuestionTable from '../components/QuestionTable';
 
  
 const HomeGrid=styled(Grid)(({theme}) => ({
@@ -75,32 +76,9 @@ function Home(props) {
 
       <HomeGrid container spacing={3}>
         
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Area>
-            <Typography variant="h5" color="inherit" component='div'>
-            <Search style={{height: 80, width: 50}}/><br/>
-              Find the best answer to your technical question and help others answer theirs.
-              <br/><br/>
-              <StyledButton variant="contained" size="large"  onClick={props.action}><b>Log In</b></StyledButton>
-            </Typography>
-            
-          </Area> 
-        </Grid>
-        <Grid item xs={6}>
-          <Area>
-            <Typography variant="h5" color="inherit" component='div' align="center" sx={{width:'100%'}}>
-              <img style={{height:40, width: 'auto'}} src={HRC}/><br/>
-              Have a question regarding {" "}
-              <TextTransition springConfig={presets.gentle} inline='true' direction='down' style={{}} >
-                <h2 style={{color:theme.palette.primary.contrastTextLight}}>{TEXTS[index % TEXTS.length]}</h2>
-              </TextTransition>
-              {" "}?
-              <br/>
-            <Typography variant="h6" color="inherit" component='div' align="center" sx={{width:'100%'}}>
-              Get started with high<b>Stack</b> and join the community of knowledge and solutions all over <b>HighRadius Corporation.</b>
-            </Typography>
-            </Typography>
-            
+            <QuestionTable title="Top Questions" height="300px" padding={true}/>
           </Area> 
         </Grid>
         <Grid item xs={3}>

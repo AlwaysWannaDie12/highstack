@@ -59,7 +59,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function AccountManage(props) {
   return (
-    <ThemeProvider thene={theme}>
+    <ThemeProvider theme={theme}>
       <HomeGrid>
         <UserStack>
           <Avatar name={props.user.name} size="80" round="8px"/>
@@ -81,17 +81,16 @@ function AccountManage(props) {
             <Grid item xs={4}>
             Stats:
               <DetailStack>
-                <Stack direction="row" spacing={12} justifyContent="center">
-                  <Item elevation={0}>
-                    <StyleText variant="caption" color="inherit" component='div'>
+                <Grid spacing={4}>
+                <StyleText variant="caption" color="inherit" component='div'>
+                  <Grid item xs={6}>
                     Reputation
-                    </StyleText>
-                  </Item>
-                  <Item elevation={0}><StyleText variant="caption" color="inherit" component='div'>
-                    Reached
-                    </StyleText>
-                  </Item>
-                </Stack>
+                  </Grid>
+                  <Grid item xs={6}>
+                    Reputation
+                  </Grid>
+                  </StyleText>
+                </Grid>
                 </DetailStack>
             </Grid>
             <Grid item xs={8}>

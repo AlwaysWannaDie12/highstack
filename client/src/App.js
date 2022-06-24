@@ -11,7 +11,7 @@ import Home from './pages/Home';
 import Landing from './pages/Landing';
 import AccountManage from './pages/AccountManage';
 import AskQuestion from './pages/AskQuestion';
-import TopQuestions from './pages/TopQuestions';
+import Questions from './pages/Questions';
 import Products from './pages/Products';
 import Tags from './pages/Tags';
 import Connect from './pages/Connect';
@@ -31,12 +31,7 @@ function App() {
 
   const [buttonPopup, setButtonPopup] = useState(false);
 
-  const adminUser = {
-    ldap: "srenjoy.saha",
-    password: "test1234"
-  }
-
-  const [user, setUser] = useState({ldap: "srenjoy.saha", name: "Srenjoy Saha", password: "test1234"});
+  const [user, setUser] = useState({ldap: "", name: "HRC Test", password: ""});
   const [error, setError] = useState("");
 
   const ldapLogin = details => {
@@ -45,18 +40,24 @@ function App() {
       ldap : details.ldap,
       password : details.password
     }).then((response) => {
-        console.log(response);
+        console.log(response.data.message);
         if (response.message==="Wrong Credentials"){
           setError("Incorrect Details");
         }
         setUser({
               ldap: details.ldap,
               password: details.password,
-              name: details.ldap.split('.')[0].charAt(0).toUpperCase() + details.ldap.split('.')[0].slice(1),
+              name: response.data.message,
             })
         setButtonPopup(!buttonPopup);
 
     });
+  }
+
+  const getProductDetials = () => {
+    Axios.post("http://localhost:4000/getProducts.do").then((response) =>{
+      console.log(response);
+    })
   }
 
   const Logout = () =>{
@@ -81,7 +82,7 @@ function App() {
         <Header action={() => setButtonPopup(!buttonPopup)} nav={user} drawer={() => toggleDrawer()}/>
 
        
-          <Body maxWidth="100%" disableGutters='true' bgcolor={theme.palette.primary.main}>
+          <Body maxWidth="100%" disableGutters={true} bgcolor={theme.palette.primary.main}>
           
             
             <Login trigger = {buttonPopup} action={() => setButtonPopup(!buttonPopup)} Login={ldapLogin} error={error}/>
@@ -99,8 +100,8 @@ function App() {
               <Route path="/" element={<Landing action={() => setButtonPopup(!buttonPopup)}/>}/>
             )}
             <Route path="/user" element={<AccountManage user={user}/>}/>
-            <Route path="/askQuestion" element={<AskQuestion/>}/>
-            <Route path="/topQuestions" element={<TopQuestions/>}/>
+            <Route path="/askQuestion" element={<AskQuestion products={getProductDetials} />}/>
+            <Route path="/topQuestions" element={<Questions/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/tags" element={<Tags/>}/>
             <Route path="/connect" element={<Connect/>}/>              
