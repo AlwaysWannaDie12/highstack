@@ -15,6 +15,7 @@ const SidePanelPaper = styled(Paper)(({theme}) => ({
     justifyContent: 'space-evenly',
     position: 'sticky',
     width: '5%',
+    minHeight:'inherit',
     height: 'inherit',
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.primary.contrastText,
@@ -36,7 +37,7 @@ function SidePanel(props) {
                 </Tooltip> 
             </Grid>
             <Grid item xs={12}>
-                <Tooltip title="Top Questions" component={Link} to="/topQuestions" color="success">
+                <Tooltip title="Questions" component={Link} to="/topQuestions" color="success">
                     <IconButton>
                         <GradingIcon/>
                     </IconButton>

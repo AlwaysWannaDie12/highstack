@@ -78,7 +78,7 @@ function Home(props) {
         
         <Grid item xs={12}>
           <Area>
-            <QuestionTable title="Top Questions" height="300px" padding={true}/>
+            <QuestionTable title="Top Questions" height="300px" padding={true} product=""/>
           </Area> 
         </Grid>
         <Grid item xs={3}>

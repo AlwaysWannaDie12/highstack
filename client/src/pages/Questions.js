@@ -36,7 +36,7 @@ function Questions() {
   return (
     <ThemeProvider theme={theme}>
             <HomeGrid >
-                <QuestionTable title="Questions" height="600px"/>
+                <QuestionTable title="Questions" height="600px" product=""/>
             </HomeGrid>
         
     </ThemeProvider>

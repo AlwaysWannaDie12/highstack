@@ -24,6 +24,7 @@ const Body = styled(Container)(({ theme }) => ({
   overflow: 'auto',
   height: 'inherit',
   display: 'flex',
+  minHeight:'100vh'
 }));
 
 

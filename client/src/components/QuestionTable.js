@@ -13,7 +13,9 @@ function QuestionTable(props) {
     const [QuestionData, setQuestionData] = useState([]);
 
     const loadQuestion = () => {
-        axios.get('http://localhost:4000/getAllQuestions').then(response =>{
+        axios.post('http://localhost:4000/getAllQuestions',{
+            product : props.product
+          }).then(response =>{
             console.log(response.data);
             setQuestionData(response.data);
         });
@@ -71,7 +73,7 @@ function QuestionTable(props) {
                             <Divider orientation="vertical" variant="middle" flexItem light />
                             <ListItemIcon>
                             <Typography variant="subtitle2" color="inherit" align="center" marginLeft='2px' width="100%">
-                                    {question.product_name}
+                                    {question.product}
                             </Typography>
                             </ListItemIcon>
                             <Divider orientation="vertical" variant="middle" flexItem light />

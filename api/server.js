@@ -13,7 +13,7 @@ app.use(express.json());
 let db = mysql.createConnection({
     user:"root",
     host:"localhost",
-    password:"root",
+    password:"password",
     database:"highstack_db"
 })
 
@@ -23,7 +23,7 @@ app.listen(4000, () => {
     console.log("running on port 4000");
 })
 
-app.get('/getProducts.do', (req, res) => {
+app.get('/getProducts', (req, res) => {
     let prodQuery = "SELECT * FROM lu_products";
 
     db.query(prodQuery,(error, results, fields) => {
@@ -31,23 +31,42 @@ app.get('/getProducts.do', (req, res) => {
             return console.error(error.message);
           }
         if(results){
+            console.log(results);
             res.send(results);
         }
     })
 })
 
-app.get('/getAllQuestions', (req,res) => {
-    let questionQuery = "SELECT * FROM lu_questions q LEFT JOIN lu_products p ON q.product=p.pk_product_id ORDER BY q.views DESC";
+app.post('/getAllQuestions', (req,res) => {
+    let questionQuery = "SELECT * FROM lu_questions ORDER BY views DESC";
 
+   if(req.body.product!==""){
+    const product = req.body.product;
+    questionQuery = "SELECT * FROM lu_questions WHERE product =? ORDER BY views DESC";
+
+    db.query(questionQuery,[product],(error, results, fields) => {
+        if (error) {
+            return console.error(error.message);
+          }
+        if(results){
+            console.log(results);
+            res.send(results);
+        }
+    })
+   }
+   else{
     db.query(questionQuery,(error, results, fields) => {
         if (error) {
             return console.error(error.message);
           }
         if(results){
-            // console.log(results);
+            console.log(results);
             res.send(results);
         }
     })
+   }
+
+    
 })
 
 app.post('/login',(req, res) => {
