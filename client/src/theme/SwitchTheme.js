@@ -1,6 +1,5 @@
-import { createMuiTheme } from "@material-ui/core/styles"
-​
-const baseTheme = createMuiTheme({
+import { createTheme } from '@mui/material';
+const baseTheme = createTheme({
     breakpoints: {
         values: {
           xs: 0,
@@ -136,12 +135,35 @@ const baseTheme = createMuiTheme({
       }
       
 })
-​
-const darkTheme = createMuiTheme({
+const darkTheme = createTheme({
   ...baseTheme,
   palette: {
     type: "dark",
-    primary: {
+    neutral: {
+        100: '#F3F4F6',
+        200: '#E5E7EB',
+        300: '#D1D5DB',
+        400: '#9CA3AF',
+        500: '#6B7280',
+        600: '#4B5563',
+        700: '#374151',
+        800: '#1F2937',
+        900: '#111827'
+      },
+      action: {
+        active: '#6B7280',
+        focus: 'rgba(55, 65, 81, 0.12)',
+        hover: 'rgba(55, 65, 81, 0.04)',
+        selected: 'rgba(55, 65, 81, 0.08)',
+        disabledBackground: 'rgba(55, 65, 81, 0.12)',
+        disabled: 'rgba(55, 65, 81, 0.26)'
+      },
+      background: {
+        default: '#F9FAFC',
+        paper: '#FFFFFF'
+      },
+      divider: '#E6E8F0',
+      primary: {
         main: '#1f222b',
         light: '#2a2d36',
         dark: '#12141a',
@@ -158,19 +180,111 @@ const darkTheme = createMuiTheme({
         dark: '#0B815A',
         contrastText: '#FFFFFF'
       },
+      success: {
+        main: '#089664',
+        light: '#43C6B7',
+        dark: '#0E8074',
+        contrastText: '#FFFFFF'
+      },
+      info: {
+        main: '#2196F3',
+        light: '#64B6F7',
+        dark: '#0B79D0',
+        contrastText: '#FFFFFF'
+      },
+      warning: {
+        main: '#FFB020',
+        light: '#FFBF4C',
+        dark: '#B27B16',
+        contrastText: '#FFFFFF'
+      },
+      error: {
+        main: '#D14343',
+        light: '#DA6868',
+        dark: '#922E2E',
+        contrastText: '#FFFFFF'
+      },
+      text: {
+        primary: '#121828',
+        secondary: '#65748B',
+        disabled: 'rgba(55, 65, 81, 0.48)'
+      }
   }
 })
-const lightTheme = createMuiTheme({
+const lightTheme = createTheme({
   ...baseTheme,
   palette: {
     type: "light",
-    primary: {
-      main: "#fafafa"
-    },
-    secondary: {
-      main: "#26a27b"
-    }
+    neutral: {
+        100: '#F3F4F6',
+        200: '#E5E7EB',
+        300: '#D1D5DB',
+        400: '#9CA3AF',
+        500: '#6B7280',
+        600: '#4B5563',
+        700: '#374151',
+        800: '#1F2937',
+        900: '#111827'
+      },
+      action: {
+        active: '#fff',
+        focus: 'rgba(55, 65, 81, 0.12)',
+        hover: 'rgba(55, 65, 81, 0.04)',
+        selected: 'rgba(55, 65, 81, 0.08)',
+        disabledBackground: 'rgba(55, 65, 81, 0.12)',
+        disabled: 'rgba(55, 65, 81, 0.26)'
+      },
+      background: {
+        default: '#F9FAFC',
+        paper: '#FFFFFF'
+      },
+      divider: '#E6E8F0',
+      primary: {
+        main: '#4b536e',
+        light: '#d1dcff',
+        dark: '#14aff1',
+        contrastText: '#ffffff',
+        contrastTextLight: '#ffffff',
+        contrastTextDark: '#ffffff',
+        error: '#d14343',
+        shadow: '#667296',
+        blur: 'rgba(0,0,0,.8)',
+      },
+      secondary: {
+        main: '#10B981',
+        light: '#ccffed',
+        dark: '#0B815A',
+        contrastText: '#FFFFFF'
+      },
+      success: {
+        main: '#fff',
+        light: '#43C6B7',
+        dark: '#0E8074',
+        contrastText: '#FFFFFF'
+      },
+      info: {
+        main: '#2196F3',
+        light: '#64B6F7',
+        dark: '#0B79D0',
+        contrastText: '#FFFFFF'
+      },
+      warning: {
+        main: '#FFB020',
+        light: '#FFBF4C',
+        dark: '#B27B16',
+        contrastText: '#FFFFFF'
+      },
+      error: {
+        main: '#D14343',
+        light: '#DA6868',
+        dark: '#922E2E',
+        contrastText: '#FFFFFF'
+      },
+      text: {
+        primary: '#121828',
+        secondary: '#65748B',
+        disabled: 'rgba(55, 65, 81, 0.48)'
+      }
   }
 })
-​
 export { darkTheme, lightTheme }

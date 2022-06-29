@@ -1,12 +1,36 @@
 import {List, ListItem, ListItemText, ListItemButton, Box, Typography, ListSubheader,ListItemIcon, Divider,Chip } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from "axios";   
-import { ThemeProvider, styled } from '@mui/material/styles';
-import { theme } from "../theme/theme";
+import {styled } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
+
+const QBox = styled(Box)(({theme}) => ({
+            width:'100%', 
+            bgcolor:theme.palette.primary.dark,
+            overflow:'auto',
+            borderRadius:0.8,
+            "&::-webkit-scrollbar": {
+                width: 5
+              },
+              "&::-webkit-scrollbar-track": {
+                backgroundColor: theme.palette.primary.dark
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: theme.palette.primary.contrastTextDark,
+                borderRadius: 2,
+              }
+}))
+
+const SubHeader = styled(ListSubheader)(({theme}) => ({
+    backgroundColor:theme.palette.primary.dark
+}))
+
+const TagChip = styled(Chip)(({theme}) => ({
+    color:theme.palette.primary.contrastTextDark
+}))
    
 
 function QuestionTable(props) {
@@ -14,7 +38,8 @@ function QuestionTable(props) {
 
     const loadQuestion = () => {
         axios.post('http://localhost:4000/getAllQuestions',{
-            product : props.product
+            product : props.product,
+            search : props.search
           }).then(response =>{
             console.log(response.data);
             setQuestionData(response.data);
@@ -26,26 +51,11 @@ function QuestionTable(props) {
    }, []);
 
   return (
-        <Box sx={{
-            width:'100%', 
-            bgcolor:theme.palette.primary.dark,
-            overflow:'auto',
-            borderRadius:0.8,
-            maxHeight:props.height,
-            "&::-webkit-scrollbar": {
-                width: 5
-              },
-              "&::-webkit-scrollbar-track": {
-                backgroundColor: theme.palette.primary.dark
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: theme.palette.primary.contrastTextDark,
-                borderRadius: 2
-              }}}>
+        <QBox sx={{maxHeight:props.height}}>
             <List subheader={
-                <ListSubheader color='inherit' sx={{bgcolor:theme.palette.primary.dark}}>
+                <SubHeader color='inherit'>
                     {props.title}
-                </ListSubheader>
+                </SubHeader>
             }>
             {QuestionData.map(question => {
                 return (
@@ -77,14 +87,14 @@ function QuestionTable(props) {
                             </ListItemIcon>
                             <Divider orientation="vertical" variant="middle" flexItem light />
                             <ListItemText primary={question.question_title} sx={{marginLeft:'20px'}}/>
-                            <Chip label={question.tags} size="small" sx={{color:theme.palette.primary.contrastTextDark}}/>
+                            <TagChip label={question.tags} size="small"/>
                         </ListItemButton>
                     </ListItem>
                 );
             })}
 
             </List>
-        </Box>
+        </QBox>
   )
 }
 

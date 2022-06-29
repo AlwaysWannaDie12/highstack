@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Link, TextField, Typography, Paper, Drawe
 import './App.css';
 import Header from './components/Header';
 import { ThemeProvider, styled} from '@mui/material/styles';
-import { darkTheme, lightTheme } from './theme/SwithTheme';
+import { darkTheme, lightTheme } from './theme/SwitchTheme';
 import Login from './components/Login';
 import { useEffect, useState, useRef} from 'react';
 import SidePanel from './components/SidePanel';
@@ -16,6 +16,7 @@ import Products from './pages/Products';
 import Tags from './pages/Tags';
 import Connect from './pages/Connect';
 import Axios from 'axios';
+import SearchPage from './pages/SearchPage';
 
 
 
@@ -34,8 +35,13 @@ function App() {
 
   const [user, setUser] = useState({ldap: "", name: "HRC Test", password: ""});
   const [error, setError] = useState("");
-  const darkMode= true;
-  const theme = (darkMode?darkTheme:lightTheme);
+  const [isDarkMode,setIsDarkMode] = useState(true);
+
+  const handleDark = () => {
+    setIsDarkMode(!isDarkMode);
+  }
+
+  const theme = (isDarkMode?darkTheme:lightTheme);
 
   const ldapLogin = details => {
     console.log(details);
@@ -68,7 +74,6 @@ function App() {
   }
 
 
-
   
   const [open, setOpen] = useState(true);
 
@@ -80,9 +85,15 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Header action={() => setButtonPopup(!buttonPopup)} nav={user} drawer={() => toggleDrawer()}/>
+        <Header 
+          action={() => setButtonPopup(!buttonPopup)} 
+          nav={user} 
+          drawer={() => toggleDrawer()} 
+          isDarkMode = {isDarkMode}
+          handleDark = {handleDark}
+        />
 
        
           <Body maxWidth="100%" disableGutters={true} bgcolor={theme.palette.primary.main}>
@@ -96,7 +107,7 @@ function App() {
               <SidePanel toggle={null}/>
             )}
             
-            <Routes>
+            <Routes forceRefresh={true}>
             {user.name!=="" ? (
               <Route path="/" element={<Home/>} />
             ):(
@@ -107,7 +118,8 @@ function App() {
             <Route path="/topQuestions" element={<Questions/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/tags" element={<Tags/>}/>
-            <Route path="/connect" element={<Connect/>}/>              
+            <Route path="/connect" element={<Connect/>}/>   
+            <Route path="/search" element={<SearchPage/>}/>           
             </Routes>
 
            

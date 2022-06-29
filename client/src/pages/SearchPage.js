@@ -3,6 +3,8 @@ import { ThemeProvider, styled } from '@mui/material/styles';
 import QuestionLine from '../components/QuestionLine';
 import QuestionTable from '../components/QuestionTable';
 import { theme } from "../theme/theme";
+import { useLocation} from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const HomeGrid=styled(Grid)(({theme}) => ({
@@ -35,27 +37,18 @@ const Area = styled(Grid)(({ theme }) => ({
     
 }));
 
-function Questions() {
+function SearchPage(props) {
+    const location = useLocation();
+
+
   return (
             <HomeGrid >
               <Area>
-              <QuestionTable title="Questions" height="600px" product="" search=""/>
+              <QuestionTable title="Questions" height="600px" product="" search={location.state.search}/>
               </Area>
             </HomeGrid>
         
   )
 }
 
-export default Questions
-
-
-{/* <QuestionArea spacing={3}>
-                    <QuestionLine {...Question}/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                    <QuestionLine/>
-                </QuestionArea> */}
+export default SearchPage

@@ -54,6 +54,20 @@ app.post('/getAllQuestions', (req,res) => {
         }
     })
    }
+   else if(req.body.search!==""){
+    const search = '%'+req.body.search+'%';
+    questionQuery = "SELECT * FROM lu_questions WHERE (question_title LIKE ? OR question_body LIKE ?) ORDER BY views DESC;";
+
+    db.query(questionQuery,[search,search],(error, results, fields) => {
+        if (error) {
+            return console.error(error.message);
+          }
+        if(results){
+            console.log(search);
+            res.send(results);
+        }
+    })
+   }
    else{
     db.query(questionQuery,(error, results, fields) => {
         if (error) {

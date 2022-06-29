@@ -1,17 +1,49 @@
-import {AppBar,Toolbar, IconButton, Typography, TextField} from "@mui/material";
+import {AppBar,Toolbar, IconButton, Typography, TextField,Switch} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import LoginIcon from '@mui/icons-material/Login';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import { ThemeProvider, styled } from '@mui/material/styles';
-import { theme } from "../theme/theme";
-import {Link} from "react-router-dom";
+import { styled } from '@mui/material/styles';
+import {Link,useNavigate} from "react-router-dom";
+import { useState } from "react";
+
+
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+    padding: 8,
+    '& .MuiSwitch-track': {
+      borderRadius: 22 / 2,
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: 16,
+        height: 16,
+      },
+      '&:before': {
+      
+        left: 12,
+      },
+      '&:after': {
+        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
+          theme.palette.getContrastText(theme.palette.primary.main),
+        )}" d="M19,13H5V11H19V13Z" /></svg>')`,
+        right: 12,
+      },
+    },
+    '& .MuiSwitch-thumb': {
+      boxShadow: 'none',
+      width: 16,
+      height: 16,
+      margin: 2,
+    },
+  }));
 
 
 
 const CustomAppbar = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
     display: 'grid',
-    gridTemplateColumns: '10rem 1fr 6rem',
+    gridTemplateColumns: '10rem 1fr 6rem 6rem',
     gridColumnGap: '25px',
     padding: '10px',
 }));
@@ -20,11 +52,20 @@ const SearchBar = styled(TextField)(({theme}) =>({
     marginTop: '5px',
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: theme.palette.primary.light,    
+    backgroundColor: theme.palette.primary.light,  
+    width:'100%'  
 }))
     
 function Header(props) {
 
+    const [searchContent, setSearchContent] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        navigate('/search', {state:{search:searchContent}});
+    };
 
   return (
         <CustomAppbar position="static" sx={{zIndex:"6"}}>
@@ -35,7 +76,10 @@ function Header(props) {
             <Typography variant="h6" color="inherit" component={Link} to="/" sx={{textDecoration:'none'}}>high<b>Stack</b></Typography>
                 
             </Toolbar>
-            <SearchBar variant="filled" size="small" label="Search" color="secondary" sx={{ input: { color: 'white' } }}/>
+            <form style={{width:'1fr'}} onSubmit={handleSubmit}>
+            <SearchBar variant="filled" size="small" label="Search" color="secondary" sx={{ input: { color: 'white' } }}
+            onChange={event => setSearchContent(event.target.value)} value={searchContent}/>
+            </form>
             {props.nav.name!=="" ? (
                 <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} component={Link} to="/user">
                     <ManageAccountsIcon/>
@@ -45,6 +89,13 @@ function Header(props) {
                     <LoginIcon/>
                 </IconButton>
             )}
+
+            <MaterialUISwitch
+            checked={props.isDarkMode}
+            onChange={props.handleDark}
+            inputProps={{ 'aria-label': 'controlled' }}
+            sx={{marginTop:'10px'}}
+            />
            
         </CustomAppbar>
         

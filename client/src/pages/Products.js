@@ -56,6 +56,20 @@ function a11yProps(index) {
   };
 }
 
+const Area = styled(Grid)(({ theme }) => ({
+  marginTop: '0px',
+  height: '100%',
+  width: 'auto',
+  backgroundColor: theme.palette.primary.shadow,
+  borderRadius: theme.shape.borderRadius,
+  padding: '30px',
+  zIndex:3,
+  display: 'flex',
+  alignItems: 'center',
+  overflow: "hidden",
+    
+}));
+
 
 
 function Products() {
@@ -70,8 +84,6 @@ function Products() {
 
   return (
       <HomeGrid container spacing={3}>
-      
-                {/* <QuestionTable title="Questions" height="600px"/> */}
 
                 <Box sx={{ width: '100%' }}>
             
@@ -97,27 +109,27 @@ function Products() {
                           <Tab label="CRD" {...a11yProps(4)} />
                           <Tab label="CLS" {...a11yProps(5)} />
                         </Tabs>
-                      
+                      <Area>
                       <TabPanel value={value} index={0}>
-                        <QuestionTable height="600px" product=""/>
+                        <QuestionTable height="600px" product="" search=""/>
                       </TabPanel>
                       <TabPanel value={value} index={1}>
-                        <QuestionTable height="600px" product="DMS"/>
+                        <QuestionTable height="600px" product="DMS" search=""/>
                       </TabPanel>
                       <TabPanel value={value} index={2}>
-                        <QuestionTable height="600px" product="CAA"/>
+                        <QuestionTable height="600px" product="CAA" search=""/>
                       </TabPanel>
                       <TabPanel value={value} index={3}>
-                        <QuestionTable height="600px" product="EIPP"/>
+                        <QuestionTable height="600px" product="EIPP" search=""/>
                       </TabPanel>
                       <TabPanel value={value} index={4}>
-                        <QuestionTable height="600px" product="CRD"/>
+                        <QuestionTable height="600px" product="CRD" search=""/>
                       </TabPanel>
                       <TabPanel value={value} index={5}>
-                        <QuestionTable height="600px" product="CLS"/>
+                        <QuestionTable height="600px" product="CLS" search=""/>
                       </TabPanel>
+                      </Area>
                 </Box>
-            
             </HomeGrid>
         
   )
