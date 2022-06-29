@@ -25,8 +25,6 @@ const SidePanelPaper = styled(Paper)(({theme}) => ({
 
 function SidePanel(props) {
   return (props.toggle) ? (
-
-    <ThemeProvider theme={theme}>
         <SidePanelPaper square elevation={0} >
         <Grid container spacing={10}>
             <Grid item xs={12}>
@@ -66,7 +64,6 @@ function SidePanel(props) {
             </Grid>
         </Grid>
         </SidePanelPaper>
-        </ThemeProvider>
     
   ) : (
     <SidePanelPaper square elevation={0} sx={{marginLeft:'-100px'}}>

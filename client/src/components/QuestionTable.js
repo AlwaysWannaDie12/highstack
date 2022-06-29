@@ -26,7 +26,6 @@ function QuestionTable(props) {
    }, []);
 
   return (
-      <ThemeProvider theme={{theme}}>
         <Box sx={{
             width:'100%', 
             bgcolor:theme.palette.primary.dark,
@@ -86,7 +85,6 @@ function QuestionTable(props) {
 
             </List>
         </Box>
-    </ThemeProvider>
   )
 }
 

@@ -69,7 +69,6 @@ function Products() {
 
 
   return (
-    <ThemeProvider theme={theme}>
       <HomeGrid container spacing={3}>
       
                 {/* <QuestionTable title="Questions" height="600px"/> */}
@@ -121,7 +120,6 @@ function Products() {
             
             </HomeGrid>
         
-    </ThemeProvider>
   )
 }
 

@@ -27,7 +27,6 @@ function Header(props) {
 
 
   return (
-    <ThemeProvider theme={theme}>
         <CustomAppbar position="static" sx={{zIndex:"6"}}>
             <Toolbar variant="dense">
             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={props.drawer}>
@@ -48,7 +47,6 @@ function Header(props) {
             )}
            
         </CustomAppbar>
-    </ThemeProvider>
         
   )
 }

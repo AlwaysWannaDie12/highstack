@@ -40,13 +40,11 @@ const [index, setIndex] = useState(0);
 
 
   return (
-    <ThemeProvider theme={theme}>
         <Area>
             <Typography variant="h6" color="inherit" component='div' align="center" sx={{width:'inherit'}}>
                 {MessageText[index%MessageText.length]}
             </Typography>
       </Area>
-    </ThemeProvider>
   )
 }
 

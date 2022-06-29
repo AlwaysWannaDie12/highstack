@@ -34,12 +34,10 @@ const QuestionArea = styled(Stack)(({ theme }) => ({
 
 function Questions() {
   return (
-    <ThemeProvider theme={theme}>
             <HomeGrid >
                 <QuestionTable title="Questions" height="600px" product=""/>
             </HomeGrid>
         
-    </ThemeProvider>
   )
 }
 

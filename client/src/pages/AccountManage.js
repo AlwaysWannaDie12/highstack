@@ -59,7 +59,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function AccountManage(props) {
   return (
-    <ThemeProvider theme={theme}>
       <HomeGrid>
         <UserStack>
           <Avatar name={props.user.name} size="80" round="8px"/>
@@ -111,7 +110,6 @@ function AccountManage(props) {
           </Grid>
         </UserStack>
       </HomeGrid>
-    </ThemeProvider>
   )
 }
 

@@ -35,13 +35,11 @@ const [index, setIndex] = useState(0);
 
 
   return (
-    <ThemeProvider theme={theme}>
         <Area>
           <Fade in={index%5===0 || index%5===1 || index%5===2 || index%5===3 || index%5===4}>
             <div><ImageSender index={index%5}/></div>
           </Fade>
       </Area>
-    </ThemeProvider>
   )
 }
 

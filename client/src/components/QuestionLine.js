@@ -35,7 +35,6 @@ const QuestionText = styled(Paper)(({theme}) => ({
 
 function QuestionLine(props) {
   return (
-    <ThemeProvider theme={theme}>
         <Bar elevation={0}>
         <Stack direction="row" spacing={3}>
             <Stats elevation={0}>
@@ -69,8 +68,6 @@ function QuestionLine(props) {
 
          </Stack>
         </Bar>
-
-    </ThemeProvider>
     
   )
 }

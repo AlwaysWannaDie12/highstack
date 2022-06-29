@@ -37,7 +37,7 @@ function LoginForm(props) {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
-        <ThemeProvider theme={theme}>
+      <div>
             <Paper sx={{
                 width:'100%',
                 height:'100%',
@@ -120,7 +120,7 @@ function LoginForm(props) {
                     {props.children}
                 </Grid>
             </LoginPaper>
-        </ThemeProvider>
+        </div>
   )
 }
 

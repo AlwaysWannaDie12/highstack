@@ -54,7 +54,6 @@ const StyledButton = styled(Button)(({theme}) => ({
 function AskQuestion(props) {
 
   return (
-    <ThemeProvider theme = {theme}>
     <HomeGrid container spacing={3}>
       <Area item sx={12}>
         <StyleText variant="h5" color="inherit" component='div'>
@@ -107,7 +106,6 @@ function AskQuestion(props) {
       </Area>
      
       </HomeGrid>
-    </ThemeProvider>
   )
 }
 

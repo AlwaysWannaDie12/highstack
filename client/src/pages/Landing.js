@@ -69,7 +69,7 @@ function Landing(props) {
 
 
   return (
-    <ThemeProvider theme={theme}>
+    
 
       <HomeGrid container spacing={3}>
         
@@ -130,7 +130,6 @@ function Landing(props) {
           </Area> 
         </Grid>
       </HomeGrid>
-    </ThemeProvider>
     
   )
 }

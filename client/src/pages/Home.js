@@ -72,7 +72,6 @@ function Home(props) {
 
 
   return (
-    <ThemeProvider theme={theme}>
 
       <HomeGrid container spacing={3}>
         
@@ -110,7 +109,6 @@ function Home(props) {
           </Area> 
         </Grid>
       </HomeGrid>
-    </ThemeProvider>
     
   )
 }
