@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Link, TextField, Typography, Paper, Drawe
 import './App.css';
 import Header from './components/Header';
 import { ThemeProvider, styled} from '@mui/material/styles';
-import { theme } from './theme/theme';
+import { darkTheme, lightTheme } from './theme/SwithTheme';
 import Login from './components/Login';
 import { useEffect, useState, useRef} from 'react';
 import SidePanel from './components/SidePanel';
@@ -34,6 +34,8 @@ function App() {
 
   const [user, setUser] = useState({ldap: "", name: "HRC Test", password: ""});
   const [error, setError] = useState("");
+  const darkMode= true;
+  const theme = (darkMode?darkTheme:lightTheme);
 
   const ldapLogin = details => {
     console.log(details);
@@ -78,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <BrowserRouter>
         <Header action={() => setButtonPopup(!buttonPopup)} nav={user} drawer={() => toggleDrawer()}/>
 
