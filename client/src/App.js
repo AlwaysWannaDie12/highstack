@@ -63,11 +63,7 @@ function App() {
     });
   }
 
-  const getProductDetials = () => {
-    Axios.post("http://localhost:4000/getProducts.do").then((response) =>{
-      console.log(response);
-    })
-  }
+
 
   const Logout = () =>{
     console.log("Logout");
@@ -114,7 +110,7 @@ function App() {
               <Route path="/" element={<Landing action={() => setButtonPopup(!buttonPopup)}/>}/>
             )}
             <Route path="/user" element={<AccountManage user={user}/>}/>
-            <Route path="/askQuestion" element={<AskQuestion products={getProductDetials} />}/>
+            <Route path="/askQuestion" element={<AskQuestion />}/>
             <Route path="/topQuestions" element={<Questions/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/tags" element={<Tags/>}/>

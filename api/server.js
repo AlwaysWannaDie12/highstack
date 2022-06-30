@@ -24,7 +24,7 @@ app.listen(4000, () => {
 })
 
 app.get('/getProducts', (req, res) => {
-    let prodQuery = "SELECT * FROM lu_products";
+    let prodQuery = "SELECT product_name FROM lu_products";
 
     db.query(prodQuery,(error, results, fields) => {
         if (error) {
@@ -35,6 +35,10 @@ app.get('/getProducts', (req, res) => {
             res.send(results);
         }
     })
+})
+
+app.post('/saveQuestion',(req,res) => {
+    let saveQuestionQuery = "INSERT INTO `lu_questions`(`question_title`,`question_body`,`create_date`,`create_user_id`,tags,product) VALUES (?,?,NOW(),?,?,?);"
 })
 
 app.post('/getAllQuestions', (req,res) => {

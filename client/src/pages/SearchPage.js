@@ -39,7 +39,7 @@ const Area = styled(Grid)(({ theme }) => ({
 
 function SearchPage(props) {
     const location = useLocation();
-
+    
 
   return (
             <HomeGrid >

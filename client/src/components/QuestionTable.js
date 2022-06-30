@@ -5,6 +5,7 @@ import {styled } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { a } from 'react-spring';
 
 
 const QBox = styled(Box)(({theme}) => ({
@@ -33,6 +34,7 @@ const TagChip = styled(Chip)(({theme}) => ({
 }))
    
 
+
 function QuestionTable(props) {
     const [QuestionData, setQuestionData] = useState([]);
 
@@ -46,9 +48,13 @@ function QuestionTable(props) {
         });
     }
 
+    let tags = [];
+
     useEffect(() => {
         loadQuestion();
    }, []);
+
+   
 
   return (
         <QBox sx={{maxHeight:props.height}}>
@@ -58,6 +64,7 @@ function QuestionTable(props) {
                 </SubHeader>
             }>
             {QuestionData.map(question => {
+                tags = question.tags.split(",");
                 return (
                     <ListItem disablePadding={props.padding}>
                         <ListItemButton>
@@ -87,7 +94,11 @@ function QuestionTable(props) {
                             </ListItemIcon>
                             <Divider orientation="vertical" variant="middle" flexItem light />
                             <ListItemText primary={question.question_title} sx={{marginLeft:'20px'}}/>
-                            <TagChip label={question.tags} size="small"/>
+                            {tags.map(tag =>{
+                                return(
+                                    <TagChip label={tag} size="small"/>
+                                )
+                            })}
                         </ListItemButton>
                     </ListItem>
                 );
