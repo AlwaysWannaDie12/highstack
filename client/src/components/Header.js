@@ -20,13 +20,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         height: 16,
       },
       '&:before': {
-      
         left: 12,
       },
       '&:after': {
-        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
-          theme.palette.getContrastText(theme.palette.primary.main),
-        )}" d="M19,13H5V11H19V13Z" /></svg>')`,
+        
         right: 12,
       },
     },
@@ -36,6 +33,9 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       height: 16,
       margin: 2,
     },
+    '& .MuiSwitch-switchBase': {
+      color: 'white',
+    }
   }));
 
 
@@ -91,6 +91,7 @@ function Header(props) {
             )}
 
             <MaterialUISwitch
+            
             checked={props.isDarkMode}
             onChange={props.handleDark}
             inputProps={{ 'aria-label': 'controlled' }}

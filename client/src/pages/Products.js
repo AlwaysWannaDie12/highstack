@@ -59,7 +59,7 @@ function a11yProps(index) {
 const Area = styled(Grid)(({ theme }) => ({
   marginTop: '0px',
   height: '100%',
-  width: 'auto',
+  width: '100%',
   backgroundColor: theme.palette.primary.shadow,
   borderRadius: theme.shape.borderRadius,
   padding: '30px',
@@ -84,7 +84,7 @@ function Products() {
 
   return (
       <HomeGrid container spacing={3}>
-
+        <Area>
                 <Box sx={{ width: '100%' }}>
             
                <Tabs 
@@ -109,7 +109,6 @@ function Products() {
                           <Tab label="CRD" {...a11yProps(4)} />
                           <Tab label="CLS" {...a11yProps(5)} />
                         </Tabs>
-                      <Area>
                       <TabPanel value={value} index={0}>
                         <QuestionTable height="600px" product="" search=""/>
                       </TabPanel>
@@ -128,8 +127,9 @@ function Products() {
                       <TabPanel value={value} index={5}>
                         <QuestionTable height="600px" product="CLS" search=""/>
                       </TabPanel>
-                      </Area>
+                      
                 </Box>
+                </Area>
             </HomeGrid>
         
   )

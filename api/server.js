@@ -13,7 +13,7 @@ app.use(express.json());
 let db = mysql.createConnection({
     user:"root",
     host:"localhost",
-    password:"root",
+    password:"password",
     database:"highstack_db"
 })
 
