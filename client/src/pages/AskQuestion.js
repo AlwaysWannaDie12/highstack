@@ -3,6 +3,8 @@ import { ThemeProvider, styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import PostBodyTextArea from '../components/PostBodyTextArea';
 import CloseIcon from '@mui/icons-material/Close';
+import Axios from 'axios';
+
 
 
 
@@ -99,15 +101,15 @@ function AskQuestion(props) {
     console.log('Tags: '+selectedTags);
     console.log('Product: '+product);
 
-    // axios.post('http://localhost:3030/questions', {
-    //   title: questionTitle,
-    //   content: questionBody,
-    //   tags: tags.map(tag => tag.id),
-    // }, {withCredentials:true})
-    //   .then(response => {
-    //     console.log(response.data);
-    //     setRedirect('/questions/'+response.data[0]);
-    //   });
+    Axios.post('http://localhost:3030/saveQuestion', {
+      title: questionTitle,
+      questionBody: questionBody,
+      tags: selectedTags,
+      product: product
+    }).then(response => {
+        console.log(response.data);
+        // setRedirect('/questions/'+response.data[0]);
+      });
   }
   
 

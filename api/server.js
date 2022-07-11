@@ -8,12 +8,13 @@ app.options("*", cors({ origin: 'http://localhost:3000', optionsSuccessStatus: 2
 
 app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
 
+
 app.use(express.json());
 
 let db = mysql.createConnection({
     user:"root",
     host:"localhost",
-    password:"password",
+    password:"root",
     database:"highstack_db"
 })
 
@@ -24,6 +25,7 @@ app.listen(4000, () => {
 })
 
 app.get('/getProducts', (req, res) => {
+   
     let prodQuery = "SELECT product_name FROM lu_products";
 
     db.query(prodQuery,(error, results, fields) => {
@@ -37,8 +39,23 @@ app.get('/getProducts', (req, res) => {
     })
 })
 
+
 app.post('/saveQuestion',(req,res) => {
-    let saveQuestionQuery = "INSERT INTO `lu_questions`(`question_title`,`question_body`,`create_date`,`create_user_id`,tags,product) VALUES (?,?,NOW(),?,?,?);"
+    res.header("Access-Control-Allow-Origin","*");
+    const title= req.body.title;
+    const questionBody= req.body.questionBody;
+    const tags= req.body.tags;
+    const product= req.body.product;
+    let saveQuestionQuery = "INSERT INTO `lu_questions`(`question_title`,`question_body`,`create_date`,`create_user_id`,tags,product) VALUES (?,?,NOW(),1,?,?);"
+    db.query(saveQuestionQuery, [title,questionBody,tags,product],(error, results, fields) => {
+        if (error) {
+            return console.error(error.message);
+          }
+        if(results){
+            console.log(results);
+            res.send(results);
+        }
+    })
 })
 
 app.post('/getAllQuestions', (req,res) => {
@@ -99,7 +116,7 @@ app.post('/login',(req, res) => {
           return console.error(error.message);
         }
         if(results){
-            var user = (results[0].username);
+            var user = (results[0].pk_user_id);
             db.query(updateTime,[ldap], (error, result, field) => {
                 if (error) {
                     return console.error(error.message);

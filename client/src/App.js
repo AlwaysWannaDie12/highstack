@@ -63,6 +63,7 @@ function App() {
     });
   }
 
+  
 
 
   const Logout = () =>{
@@ -110,7 +111,7 @@ function App() {
               <Route path="/" element={<Landing action={() => setButtonPopup(!buttonPopup)}/>}/>
             )}
             <Route path="/user" element={<AccountManage user={user}/>}/>
-            <Route path="/askQuestion" element={<AskQuestion />}/>
+            <Route path="/askQuestion" element={<AskQuestion user={user}/>}/>
             <Route path="/topQuestions" element={<Questions/>}/>
             <Route path="/products" element={<Products/>}/>
             <Route path="/tags" element={<Tags/>}/>
